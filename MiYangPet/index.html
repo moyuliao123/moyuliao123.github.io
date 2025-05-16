@@ -7,7 +7,8 @@
   <style>
     html, body {
       height: 100%;
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -18,8 +19,10 @@
     .container {
       display: flex;
       align-items: center;
-      position: relative;
+      justify-content: center;
       flex-wrap: nowrap;
+      position: relative;
+      flex-direction: row;
     }
 
     .main-button {
@@ -31,7 +34,6 @@
       border-radius: 14px;
       cursor: pointer;
       user-select: none;
-      position: relative;
       z-index: 10;
     }
 
@@ -55,7 +57,8 @@
       cursor: pointer;
     }
 
-    .show .sub-button {
+    .show .sub-button,
+    .touch .sub-button {
       opacity: 1;
       pointer-events: auto;
     }
@@ -64,11 +67,28 @@
       background-color: #27ae60;
     }
 
-    @media (hover: none) {
-      /* 適用手機：sub-button 在點擊後可切換顯示 */
-      .container.touch .sub-button {
-        opacity: 1;
-        pointer-events: auto;
+    /* 手機自適應樣式 */
+    @media (max-width: 600px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .sub-buttons {
+        flex-direction: column;
+        margin-left: 0;
+        margin-top: 16px;
+        gap: 10px;
+      }
+
+      .main-button {
+        font-size: 18px;
+        padding: 12px 20px;
+      }
+
+      .sub-button {
+        font-size: 16px;
+        padding: 10px 18px;
       }
     }
   </style>
@@ -91,7 +111,7 @@
     const btnB = document.getElementById('btn-B');
     const btnC = document.getElementById('btn-C');
 
-    // 滑鼠移入/移出顯示副按鈕
+    // 滑鼠偵測（桌機）
     container.addEventListener('mouseenter', () => {
       if (!container.classList.contains('touch')) {
         container.classList.add('show');
@@ -104,7 +124,7 @@
       }
     });
 
-    // 手機支援：點擊切換 .show 狀態
+    // 手機點擊切換
     mainBtn.addEventListener('click', () => {
       const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
       if (isTouch) {
@@ -112,7 +132,7 @@
       }
     });
 
-    // 超連結功能
+    // 副按鈕連結
     btnA.addEventListener('click', () => {
       window.open('https://www.google.com.tw/maps/dir//高雄市大寮區鳳林三路696號', '_blank');
     });
@@ -120,7 +140,7 @@
       window.open('https://line.me/ti/p/GO7qsFvH9I', '_blank');
     });
     btnC.addEventListener('click', () => {
-      window.open('https://www.facebook.com/p/1加1寵物美容-100064037168025/', '_blank');
+      window.open('https://www.facebook.com/p/1加1寵物美容/-100064037168025/', '_blank');
     });
   </script>
 
