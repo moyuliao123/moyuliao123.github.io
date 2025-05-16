@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>主按鈕置中滑出按鈕 - 精準感知</title>
+<title>主按鈕置中滑出按鈕 - 按鈕跳連結</title>
 <style>
   html, body {
     height: 100%;
@@ -52,12 +52,17 @@
     pointer-events: none;
     user-select: none;
     white-space: nowrap;
+    cursor: pointer;
   }
 
   .show .sub-button {
     opacity: 1;
     transform: translateX(0);
     pointer-events: auto;
+  }
+
+  .sub-button:hover {
+    background-color: #27ae60;
   }
 </style>
 </head>
@@ -66,7 +71,7 @@
 <div class="container" id="button-container">
   <button class="main-button" id="main-btn">詳細資訊</button>
   <div class="sub-buttons">
-    <a href="https://maps.app.goo.gl/''/831+高雄市大寮區鳳林三路696號" target="_blank" class="sub-link" rel="noopener noreferrer">前往本店</a>
+    <button class="sub-button" id="btn-A">前往本店</button>
     <button class="sub-button">B</button>
     <button class="sub-button">C</button>
   </div>
@@ -75,6 +80,7 @@
 <script>
   const mainBtn = document.getElementById('main-btn');
   const container = document.getElementById('button-container');
+  const btnA = document.getElementById('btn-A');
 
   document.addEventListener('mousemove', (e) => {
     const rect = mainBtn.getBoundingClientRect();
@@ -88,6 +94,11 @@
     } else {
       container.classList.remove('show');
     }
+  });
+
+  // 按鈕 A 點擊跳轉 Google
+  btnA.addEventListener('click', () => {
+    window.open('https://maps.app.goo.gl//831+高雄市大寮區鳳林三路696號', '_blank');
   });
 </script>
 
