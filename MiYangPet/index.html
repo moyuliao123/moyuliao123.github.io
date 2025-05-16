@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8" /> 
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>主按鈕置中滑出按鈕 - 按鈕跳連結</title>
+<title>修正版 - 副按鈕可點擊測試</title>
 <style>
   html, body {
     height: 100%;
@@ -47,8 +47,8 @@
     border: none;
     border-radius: 10px;
     opacity: 0;
-    transform: translateX(-20px);
-    transition: all 0.35s ease;
+    /* 去掉transform位移 */
+    transition: opacity 0.35s ease;
     pointer-events: none;
     user-select: none;
     white-space: nowrap;
@@ -57,7 +57,6 @@
 
   .show .sub-button {
     opacity: 1;
-    transform: translateX(0);
     pointer-events: auto;
   }
 
@@ -71,7 +70,7 @@
 <div class="container" id="button-container">
   <button class="main-button" id="main-btn">詳細資訊</button>
   <div class="sub-buttons">
-    <button class="sub-button" id="btn-A">前往本店</button>
+    <button class="sub-button" id="btn-A">GOOGLE資訊</button>
     <button class="sub-button">B</button>
     <button class="sub-button">C</button>
   </div>
@@ -89,14 +88,16 @@
 
     const dist = Math.hypot(e.clientX - centerX, e.clientY - centerY);
 
-    if (dist < 120) {
+    // 測試用，印出距離
+    // console.log("距離主按鈕中心:", dist.toFixed(1));
+
+    if (dist < 180) {
       container.classList.add('show');
     } else {
       container.classList.remove('show');
     }
   });
 
-  // 按鈕 A 點擊跳轉 Google
   btnA.addEventListener('click', () => {
     window.open('https://maps.app.goo.gl//831+高雄市大寮區鳳林三路696號', '_blank');
   });
