@@ -5,21 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>𐂯迷漾狗寵物𐂯₊˚⊹</title>
 
-  <!-- ✅ Google 字體：Jacques Francois Shadow -->
+  <!-- ✅ Google 字體 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&display=swap" rel="stylesheet">
+
   <style>
     html, body {
       height: 100%;
       margin: 0;
       padding: 0;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       background: #f0f0f0;
-      font-family: 'Jacques Francois Shadow', sans-serif;
+      font-family: Arial, sans-serif;
       font-size: 18px;
+    }
+
+    .info-section {
+      text-align: center;
+      margin-top: 32px;
+      margin-bottom: 24px;
+      font-family: Arial, sans-serif;
+      color: #333;
+      max-width: 500px;
+    }
+
+    .shop-name {
+      font-size: 28px;
+      margin-bottom: 12px;
+      font-family: 'Cactus Classical Serif', serif;
+      color: #6e4e2e;
+    }
+
+    .info-section p {
+      margin: 6px 0;
+      font-size: 16px;
+    }
+
+    .info-section hr {
+      margin-top: 20px;
+      border: none;
+      border-top: 2px solid #ccc;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .container {
@@ -29,7 +60,9 @@
       flex-wrap: nowrap;
       position: relative;
       flex-direction: row;
+      margin-bottom: 40px;
     }
+
     .main-button,
     .sub-button {
       font-family: 'Cactus Classical Serif', sans-serif;
@@ -64,6 +97,7 @@
       transition: opacity 0.35s ease;
       pointer-events: none;
       cursor: pointer;
+      white-space: nowrap;
     }
 
     .show .sub-button,
@@ -77,6 +111,15 @@
     }
 
     @media (max-width: 600px) {
+      .info-section {
+        font-size: 15px;
+        padding: 0 20px;
+      }
+
+      .shop-name {
+        font-size: 22px;
+      }
+
       .container {
         flex-direction: column;
         align-items: center;
@@ -103,6 +146,16 @@
 </head>
 <body>
 
+  <!-- ✅ 商店資訊區塊 -->
+  <div class="info-section">
+    <h1 class="shop-name">𐂯迷漾狗寵物𐂯₊˚⊹</h1>
+    <p>電話：<strong>07-7868598</strong>（歡迎預約寵物美容）</p>
+    <p>營業時間：12:00–21:00（周日公休）</p>
+    <p>服務內容：美容 / 繁殖 / 商品 / 住宿</p>
+    <hr>
+  </div>
+
+  <!-- ✅ 按鈕區塊 -->
   <div class="container" id="button-container">
     <button class="main-button" id="main-btn">詳細資訊<br></button>
     <div class="sub-buttons">
@@ -112,6 +165,7 @@
     </div>
   </div>
 
+  <!-- ✅ JavaScript 控制互動邏輯 -->
   <script>
     const container = document.getElementById('button-container');
     const mainBtn = document.getElementById('main-btn');
