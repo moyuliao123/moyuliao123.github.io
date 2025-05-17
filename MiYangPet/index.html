@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>𐂯迷漾狗寵物𐂯₊˚⊹</title>
+  <title>𐂯迷漾狗寵物𐂯</title>
 
   <!-- ✅ Google 字體 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -192,22 +192,26 @@
 
   <!-- ✅ 商店資訊區塊 -->
   <div class="info-section">
-    <h1 class="shop-name">𐂯迷漾狗寵物𐂯</h1>
+    <h1 class="shop-name">𑀯迷漾狗寵物𑀯</h1>
     <p>電話：<strong>07-7868598</strong>（歡迎預約寵物美容）</p>
     <p>營業時間：12:00–21:00（周日公休）</p>
     <p>服務內容：美容 / 繁殖 / 商品 / 住宿</p>
     <hr>
   </div>
 
-  <!-- ✅ 按鈕區塊 -->
+  <!-- ✅ 第一航 按鈕區塊 -->
   <div class="container" id="button-container">
     <button class="main-button" id="main-btn">詳細資訊<br></button>
     <div class="sub-buttons">
       <button class="sub-button" id="btn-A">前往本店<br>Go to our store</button>
       <button class="sub-button" id="btn-B">聯絡我們<br>contact us</button>
       <button class="sub-button" id="btn-C">粉絲專頁<br>FB fanpage</button>
-      <button class="sub-button" id="btn-D">關於小狗<br>About Doggo</button>
     </div>
+  </div>
+
+  <!-- ✅ 第二航 狗狗資訊按鈕 -->
+  <div class="container">
+    <button class="main-button" id="main-btn-2">關於小狗<br>About Doggo</button>
   </div>
 
   <!-- ✅ 狗狗展示區塊 -->
@@ -228,7 +232,7 @@
     const btnA = document.getElementById('btn-A');
     const btnB = document.getElementById('btn-B');
     const btnC = document.getElementById('btn-C');
-    const btnD = document.getElementById('btn-D');
+    const mainBtn2 = document.getElementById('main-btn-2');
 
     container.addEventListener('mouseenter', () => {
       if (!container.classList.contains('touch')) {
@@ -298,7 +302,7 @@
       showDog(currentDog);
     }
 
-    btnD.addEventListener('click', () => {
+    mainBtn2.addEventListener('click', () => {
       currentDog = 0;
       showDog(currentDog);
     });
