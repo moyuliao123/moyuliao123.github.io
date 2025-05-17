@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ᔏ迷漾狗孰物ᔏ₋˜⊹</title>
+  <title>𐂯迷漾狗寵物𐂯₊˚⊹</title>
 
-  <!-- Google font -->
+  <!-- ✅ Google 字體 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&display=swap" rel="stylesheet">
@@ -110,33 +110,48 @@
       background-color: #27ae60;
     }
 
-    .dog-info {
-      margin-top: 30px;
+    .dog-section {
+      display: none;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-      max-width: 500px;
+      max-width: 90%;
+      margin-top: 30px;
     }
 
-    .dog-info h2 {
-      font-family: 'Cactus Classical Serif', serif;
-      margin-bottom: 10px;
+    .dog-title {
+      font-size: 22px;
+      margin-bottom: 16px;
+      font-weight: bold;
+      color: #3b3b3b;
     }
 
-    .dog-gallery img {
-      width: 100%;
-      max-height: 300px;
-      border-radius: 12px;
-      margin-bottom: 12px;
+    .dog-image {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
-    .dog-nav button {
-      font-size: 24px;
-      padding: 6px 16px;
-      margin: 0 8px;
-      cursor: pointer;
-      background-color: #ab945c;
+    .dog-description {
+      margin-top: 12px;
+      font-size: 16px;
+    }
+
+    .nav-buttons {
+      margin-top: 18px;
+    }
+
+    .nav-buttons button {
+      font-size: 18px;
+      margin: 0 10px;
+      padding: 8px 16px;
+      background-color: #323130;
       color: white;
       border: none;
       border-radius: 8px;
+      cursor: pointer;
     }
 
     @media (max-width: 600px) {
@@ -174,42 +189,46 @@
   </style>
 </head>
 <body>
+
+  <!-- ✅ 商店資訊區塊 -->
   <div class="info-section">
-    <h1 class="shop-name">ᔏ迷漾狗孰物ᔏ</h1>
-    <p>電話：<strong>07-7868598</strong>（歡迎預約孰物美容）</p>
+    <h1 class="shop-name">𐂯迷漾狗寵物𐂯</h1>
+    <p>電話：<strong>07-7868598</strong>（歡迎預約寵物美容）</p>
     <p>營業時間：12:00–21:00（周日公休）</p>
     <p>服務內容：美容 / 繁殖 / 商品 / 住宿</p>
     <hr>
   </div>
 
+  <!-- ✅ 按鈕區塊 -->
   <div class="container" id="button-container">
     <button class="main-button" id="main-btn">詳細資訊<br></button>
-    <button class="main-button" id="dog-info-btn">關於小狗</button>
     <div class="sub-buttons">
       <button class="sub-button" id="btn-A">前往本店<br>Go to our store</button>
       <button class="sub-button" id="btn-B">聯絡我們<br>contact us</button>
       <button class="sub-button" id="btn-C">粉絲專頁<br>FB fanpage</button>
+      <button class="sub-button" id="btn-D">關於小狗<br>About Doggo</button>
     </div>
   </div>
 
-  <div class="dog-info" id="dog-info" style="display: none;">
-    <h2 id="dog-title">年度最乖</h2>
-    <div class="dog-gallery">
-      <img id="dog-image" src="dog1.jpg" alt="小狗圖片">
-      <p id="dog-description">這是我們店裡最乖的小狗，深受大家喜愛。</p>
-    </div>
-    <div class="dog-nav">
-      <button id="prev-dog">←</button>
-      <button id="next-dog">→</button>
+  <!-- ✅ 狗狗展示區塊 -->
+  <div class="dog-section" id="dog-section">
+    <div class="dog-title" id="dog-title"></div>
+    <img src="" id="dog-image" class="dog-image" alt="Dog image">
+    <div class="dog-description" id="dog-description"></div>
+    <div class="nav-buttons">
+      <button onclick="prevDog()">&lt;</button>
+      <button onclick="nextDog()">&gt;</button>
     </div>
   </div>
 
+  <!-- ✅ JavaScript 控制互動邏輯 -->
   <script>
     const container = document.getElementById('button-container');
     const mainBtn = document.getElementById('main-btn');
     const btnA = document.getElementById('btn-A');
     const btnB = document.getElementById('btn-B');
     const btnC = document.getElementById('btn-C');
+    const btnD = document.getElementById('btn-D');
 
     container.addEventListener('mouseenter', () => {
       if (!container.classList.contains('touch')) {
@@ -231,7 +250,7 @@
     });
 
     btnA.addEventListener('click', () => {
-      window.open('https://www.google.com.tw/maps/dir//高雄市大寪區鳳林三路696號', '_blank');
+      window.open('https://www.google.com.tw/maps/dir//高雄市大寮區鳳林三路696號', '_blank');
     });
     btnB.addEventListener('click', () => {
       window.open('https://line.me/ti/p/GO7qsFvH9I', '_blank');
@@ -240,52 +259,50 @@
       window.open('https://www.facebook.com/profile.php?id=100064037168025', '_blank');
     });
 
-    const dogInfoBtn = document.getElementById('dog-info-btn');
-    const dogInfo = document.getElementById('dog-info');
-    const dogTitle = document.getElementById('dog-title');
-    const dogImage = document.getElementById('dog-image');
-    const dogDescription = document.getElementById('dog-description');
-
+    // 🐶 關於小狗 展示資料
     const dogs = [
       {
         title: '年度最吵',
-        image: 'dog1.jpg',
-        description: '這隻狗狗非常有活力，每天都像開演唱會！'
+        image: 'https://i.imgur.com/0DElr0H.jpg',
+        description: '這隻小狗可以連續吠叫十小時不停歇，得主當之無愧！'
       },
       {
         title: '年度最乖',
-        image: 'dog2.jpg',
-        description: '這是我們店裡最聽話的小狗，連吃飯都會說謝謝（好像啦）。'
+        image: 'https://i.imgur.com/sRMIh8l.jpg',
+        description: '乖巧地坐著等飯飯，是店裡的天使代表。'
       },
       {
         title: '年度最笨',
-        image: 'dog3.jpg',
-        description: '牠會不小心把尾巴當玩具，然後轉三圈自己撞牆。'
+        image: 'https://i.imgur.com/LK5cVRN.jpg',
+        description: '不小心咬到自己尾巴還會嚇一跳的可愛傻瓜～'
       }
     ];
 
     let currentDog = 0;
 
     function showDog(index) {
-      dogTitle.textContent = dogs[index].title;
-      dogImage.src = dogs[index].image;
-      dogDescription.textContent = dogs[index].description;
+      const dog = dogs[index];
+      document.getElementById('dog-title').textContent = dog.title;
+      document.getElementById('dog-image').src = dog.image;
+      document.getElementById('dog-description').textContent = dog.description;
+      document.getElementById('dog-section').style.display = 'flex';
     }
 
-    document.getElementById('prev-dog').addEventListener('click', () => {
-      currentDog = (currentDog - 1 + dogs.length) % dogs.length;
-      showDog(currentDog);
-    });
-
-    document.getElementById('next-dog').addEventListener('click', () => {
+    function nextDog() {
       currentDog = (currentDog + 1) % dogs.length;
       showDog(currentDog);
-    });
+    }
 
-    dogInfoBtn.addEventListener('click', () => {
-      dogInfo.style.display = dogInfo.style.display === 'none' ? 'block' : 'none';
+    function prevDog() {
+      currentDog = (currentDog - 1 + dogs.length) % dogs.length;
+      showDog(currentDog);
+    }
+
+    btnD.addEventListener('click', () => {
+      currentDog = 0;
       showDog(currentDog);
     });
   </script>
+
 </body>
 </html>
